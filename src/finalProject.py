@@ -19,12 +19,26 @@ def main():
         R = int(input(f"please enter the 'R' value in the RGB code of your color: "))
         G = int(input(f"please enter the 'G' value in the RGB code of your color: "))
         B = int(input(f"please enter the 'B' value in the RGB code of your color: "))
-        colorName = input("Please enter the name of your color: ")
+        colorName = (input("Please enter the name of your color: ")).upper()
         with open("colorNames.csv", "a") as add_item:
             csv_writer = csv.writer(add_item)
             csv_writer.writerow([colorName, R, G, B])
         if((input("If you have no other colors to enter type 'q' to quit, or enter anything else to continue entering colors")).lower() == 'q'):
             quit = True
+        else:
+            print("enter second mode")
+    display_colors("colorNames.csv")
+
+def display_colors(file):
+  with open("colorNames.csv")  as file:
+      color_list = csv.reader(file)
+      print("Here is the list of colors you created since first opening the color picker: ")
+      for row in color_list:
+        print(f"{row[0]} - {row[1]}, {row[2]}, {row[3]}")
+
+#def colorDisplay():
+    #print("color display method is entered.")
+    
 
 
 
