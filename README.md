@@ -1,10 +1,10 @@
-# Final-Project-Proposal
+# ANGM 2305 Final-Project
 
-The proposal for my ANGM 2305 Final Project
+## Link to Repository
 
-# [Link to Repository]([url](https://github.com/Dev-McElroy/Final-Project-Proposal.git))
+Repository: <https://github.com/Dev-McElroy/Final-Project-Proposal.git>
 
-#Demo
+## Demo
 
 Demo Video: <https://vimeo.com/1036167685?share=copy>
 
