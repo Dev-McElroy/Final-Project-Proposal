@@ -37,8 +37,38 @@ def select_colors(file):
             else:
                 print("Color not found.")
         
-        if input("Type 'q' to quit or anything else to continue selecting a color: ").lower() == 'q':
+        if input("Type 'q' to quit and begin comparing colors or anything else to select a new color to display: ").lower() == 'q':
             quit = True
+
+# Split ----------
+
+    with open("colorNames.csv")  as file:
+        color_list = csv.reader(file)
+        print("Here is the list of colors you created since first opening the color picker: ")
+        for row in color_list:
+            print(f"{row[0]} - {row[1]}, {row[2]}, {row[3]}")
+    quit = False
+    while (quit == False):
+        compared_colors = []
+        for _ in range(2):
+            selectedColor = input("Please enter a name of a color you wish to compare: ").upper()
+            with open("colorNames.csv") as file:
+                color_list = csv.reader(file)
+                for row in color_list:
+                    if row[0] == selectedColor:
+                        print(f"Selected color: {row[0]} with RGB values: {row[1]}, {row[2]}, {row[3]}")
+                        compared_colors.append((int(row[1]), int(row[2]), int(row[3])))
+                        break
+                else:
+                    print(f"{selectedColor} not found in color list.")
+        
+        if len(compared_colors) == 2:
+            colorComparison(compared_colors[0], compared_colors[1])
+        
+        if input("Type 'q' to quit or anything else to continue: ").lower() == 'q':
+            quit = True
+    
+    
 
 
 def colorDisplay(R, G, B):
@@ -54,7 +84,22 @@ def colorDisplay(R, G, B):
         screen.fill((R, G, B))
         pygame.display.flip()
     pygame.quit()
-    
+
+def colorComparison(colorOne, colorTwo):
+    pygame.init()
+    resolution = (800, 600)
+    screen = pygame.display.set_mode(resolution)
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+        # Fill the left half with colorOne
+        pygame.draw.rect(screen, colorOne, (0, 0, resolution[0] // 2, resolution[1]))
+        # Fill the right half with colorTwo
+        pygame.draw.rect(screen, colorTwo, (resolution[0] // 2, 0, resolution[0] // 2, resolution[1]))
+        pygame.display.flip()
+    pygame.quit() 
 
 
 
