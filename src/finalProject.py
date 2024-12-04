@@ -18,6 +18,7 @@ def main():
             quit = True
     select_colors("colorNames.csv")
 
+
 def select_colors(file):
     with open("colorNames.csv")  as file:
         color_list = csv.reader(file)
@@ -39,8 +40,6 @@ def select_colors(file):
         
         if input("Type 'q' to quit and begin comparing colors or anything else to select a new color to display: ").lower() == 'q':
             quit = True
-
-# Split ----------
 
     with open("colorNames.csv")  as file:
         color_list = csv.reader(file)
@@ -68,8 +67,6 @@ def select_colors(file):
         if input("Type 'q' to quit or anything else to continue: ").lower() == 'q':
             quit = True
     
-    
-
 
 def colorDisplay(R, G, B):
     pygame.init()
@@ -84,6 +81,7 @@ def colorDisplay(R, G, B):
         screen.fill((R, G, B))
         pygame.display.flip()
     pygame.quit()
+
 
 def colorComparison(colorOne, colorTwo):
     pygame.init()
@@ -100,7 +98,6 @@ def colorComparison(colorOne, colorTwo):
         pygame.draw.rect(screen, colorTwo, (resolution[0] // 2, 0, resolution[0] // 2, resolution[1]))
         pygame.display.flip()
     pygame.quit() 
-
 
 
 if __name__ == "__main__":
